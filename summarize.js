@@ -17,7 +17,7 @@ let config = {
   url: 'https://api-inference.huggingface.co/models/facebook/bart-large-cnn',
   headers: { 
     'Content-Type': 'application/json', 
-    'Authorization': 'Bearer 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'
+    'Authorization': 'Bearer ' + process.env['ACCESS_TOKEN']
   },
   data : data
   
