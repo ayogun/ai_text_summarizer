@@ -18,9 +18,10 @@ let config = {
   headers: { 
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer ' + process.env['ACCESS_TOKEN']
+    'try' : process.env['ACCESS_TOKEN']
   },
-  data : data,
-  try : process.env['ACCESS_TOKEN']
+  data : data
+  
 };
 
 
