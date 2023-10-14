@@ -28,7 +28,7 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
-        git config --global user.name 'GitHub Actions'
-        git config --global user.email 'actions@github.com'
+        git config --global user.name 'byaliego'
+        git config --global user.email 'yigitogun@gmail.com'
         npm install -g gh-pages
         gh-pages -d build -u "byaliego" -r "ai_text_summarizer"
