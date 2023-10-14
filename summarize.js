@@ -11,13 +11,15 @@ let data = JSON.stringify({
   }
 });
 
+const apiKey = process.env.ACCESS_TOKEN;
+
 let config = {
   method: 'post',
   maxBodyLength: Infinity,
   url: 'https://api-inference.huggingface.co/models/facebook/bart-large-cnn',
   headers: { 
     'Content-Type': 'application/json', 
-    'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`
+    'Authorization': `Bearer ${apiKey}`
   },
   data : data
   
@@ -25,8 +27,10 @@ let config = {
 
 
   try {
+	//console.log("The api key is: " + apiKey);
     const response = await axios.request(config);
     return response.data[0].summary_text;
+	
   }
   catch (error) {
     console.log(error);

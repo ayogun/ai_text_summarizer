@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const summarizeText = require('./summarize.js');
+require('dotenv').config();
 
 // Parses JSON bodies (as sent by API clients)
 app.use(express.json());
@@ -19,6 +20,7 @@ app.post('/summarize', (req, res) => {
   summarizeText(text) 
     .then(response => {
        res.send(response); // Send the summary text as a response to the client
+	   console.log(response);
     })
     .catch(error => {
       console.log(error.message);
