@@ -25,11 +25,10 @@ jobs:
     - name: Build the application
       run: npm run build
 
-    - name: Deploy to GitHub Pages
-      env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      run: |
-        git config --global user.name 'byaliego'
-        git config --global user.email 'yigitogun@gmail.com'
-        npm install -g gh-pages
-        gh-pages -d build -u "byaliego" -r "ai_text_summarizer"
+    - name: Deploy to GH Pages 🚀
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: public
+
+  
