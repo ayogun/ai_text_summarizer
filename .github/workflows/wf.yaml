@@ -1,0 +1,31 @@
+name: Ad-Hoc Manual Approval Test
+
+on:
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  first-step:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ✅ First Step (Runs Always)
+        run: echo "First step executed!"
+
+  second-step:
+    needs: first-step
+    runs-on: ubuntu-latest
+    environment:
+      name: approval-needed
+    steps:
+      - name: ⏸️ Manual Approval Required
+        run: echo "This step requires manual approval before proceeding."
+        
+      - name: ✅ Second Step (Runs After Approval)
+        run: echo "Second step executed after manual approval!"
+
+  third-step:
+    needs: second-step
+    if: ${{ needs.second-step.result == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: ✅ Third Step (Runs Only If Second Step Succeeds)
+        run: echo "Third step executed after second step was approved!"
