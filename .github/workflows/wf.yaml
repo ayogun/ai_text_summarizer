@@ -1,7 +1,7 @@
-name: Ad-Hoc Manual Approval Test
+name: Manual Approval Workflow
 
 on:
-  workflow_dispatch:  # Allows manual trigger
+  workflow_dispatch:  # Allows manual trigger from GitHub Actions UI
 
 jobs:
   first-step:
@@ -14,11 +14,11 @@ jobs:
     needs: first-step
     runs-on: ubuntu-latest
     environment:
-      name: approval-needed
+      name: prod 
     steps:
       - name: ⏸️ Manual Approval Required
-        run: echo "This step requires manual approval before proceeding."
-        
+        run: echo "Waiting for manual approval before proceeding."
+
       - name: ✅ Second Step (Runs After Approval)
         run: echo "Second step executed after manual approval!"
 
